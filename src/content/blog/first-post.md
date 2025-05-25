@@ -31,6 +31,4 @@ Astro makes it easy to create content-driven websites. With content collections,
 asdasdasdasd
 ```
 
-![](/src/images/img.png)
-
 ## asdasd
