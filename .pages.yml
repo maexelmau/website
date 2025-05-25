@@ -30,6 +30,5 @@ content:
         type: image
       - name: tags
         label: Tags
-        type: list
-        of: string
-        default: []
+        type: string
+        list: true
