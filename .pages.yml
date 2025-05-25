@@ -23,7 +23,6 @@ content:
       - name: author
         label: Author
         type: string
-        default: Anonymous
         required: false
       - name: image
         label: Featured Image
