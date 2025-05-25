@@ -43,3 +43,6 @@ content:
         label: Tags
         type: string
         list: true
+      - name: body
+        label: Content
+        type: rich-text
