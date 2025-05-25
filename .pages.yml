@@ -1,3 +1,7 @@
+media:
+  input: src/images
+  output: /src/images
+  
 content:
   - name: blog
     label: Blogposts
@@ -24,6 +28,9 @@ content:
         label: Author
         type: string
         required: false
+      - name: image
+        label: Featured Image
+        type: image
       - name: tags
         label: Tags
         type: string
