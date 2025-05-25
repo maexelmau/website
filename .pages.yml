@@ -1,18 +1,18 @@
 media:
   input: src/images
   output: /src/images
-  
+
 content:
   - name: blog
     label: Blogposts
     path: src/content/blog
     type: collection
     view:
-      fields: [ title, slug, pubDate, image ]
+      fields: [title, slug, pubDate, image]
       primary: title
-      sort: [ pubDate, title ]
+      sort: [pubDate, title]
       default:
-        search: ''
+        search: ""
         sort: title
         order: desc
     fields:
