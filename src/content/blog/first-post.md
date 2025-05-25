@@ -25,6 +25,8 @@ Astro makes it easy to create content-driven websites. With content collections,
 3.  Access my content with type-safe APIs
     
 
+![](/src/images/img.png)
+
 ## Code Example
 
 ```
