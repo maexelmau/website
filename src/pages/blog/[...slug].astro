@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = async () => {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <article class="prose lg:prose-xl mx-auto">
+      {
+        post.data.image && (
+          <Image
+            src={post.data.image}
+            alt=""
+            class="w-full h-64 object-cover rounded-lg mb-6"
+          />
+        )
+      }
+
+      <h1 class="text-4xl font-bold mb-2">{post.data.title}</h1>
+
+      <div class="flex items-center gap-2 text-gray-600 mb-6">
+        <span>Published on {post.data.pubDate.toLocaleDateString()}</span>
+        <span>•</span>
+        <span>By {post.data.author}</span>
+        {
+          post.data.updatedDate && (
+            <>
+              <span>•</span>
+              <span>
+                Updated on {post.data.updatedDate.toLocaleDateString()}
+              </span>
+            </>
+          )
+        }
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        {
+          post.data.tags.map((tag) => (
+            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+
+      <Content />
+
+      <div class="mt-12 pt-8 border-t">
+        <a href="/blog" class="text-blue-600 hover:underline">
+          &larr; Back to all posts
+        </a>
+      </div>
+    </article>
+  </main>
+</Layout>
