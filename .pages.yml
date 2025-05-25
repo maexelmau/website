@@ -10,3 +10,21 @@ content:
       - name: slug
         label: Slug
         type: string
+      - name: description
+        label: Description
+        type: string
+      - name: pubDate
+        label: Publication Date
+        type: date
+      - name: updatedDate
+        label: Updated Date
+        type: date
+        required: false
+      - name: author
+        label: Author
+        type: string
+        required: false
+      - name: tags
+        label: Tags
+        type: string
+        list: true
