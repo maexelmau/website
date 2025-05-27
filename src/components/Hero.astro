@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import catReading from "../images/cat_reading.webp";
+---
+
+<section
+  class="relative py-8 md:py-16 px-4 md:px-6 bg-gradient-to-br from-blue-50 to-pink-50 overflow-hidden"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="relative">
+      <div class="text-center mb-4 md:mb-8">
+        <p class="text-sm md:text-lg text-gray-800 mb-5 md:mb-2">
+          Hi I'm Max, and welcome to my
+        </p>
+        <div class="relative inline-block">
+          <h1
+            class="font-playful text-4xl md:text-6xl lg:text-8xl text-gray-700 relative break-words"
+          >
+            <span
+              class="relative z-10 drop-shadow-lg"
+              style="
+              text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.15),
+                0px 0px 8px rgba(107, 114, 128, 0.2);
+            "
+            >
+              Katzenkörbchen
+            </span>
+          </h1>
+
+          <div
+            class="absolute -top-8 -right-2 md:-top-12 md:-right-4 lg:-top-32 lg:-right-8 z-20"
+          >
+            <Image
+              src={catReading}
+              alt="A cute cat reading a book"
+              class="size-16 md:size-20 lg:size-56 object-contain transform rotate-12"
+              width={224}
+              height={224}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center max-w-2xl mx-auto px-4">
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+          A cozy corner of the internet where cats rule and comfort reigns
+          supreme
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
