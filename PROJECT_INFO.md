@@ -4,7 +4,7 @@
 
 **Max's Katzenkörbchen** is a charming cat-themed website built with Astro, serving as Max's personal corner of the internet dedicated to feline friends. The German word "Katzenkörbchen" translates to "cat basket" in English, perfectly capturing the cozy, welcoming nature of this cat-centric website.
 
-**Live Site**: https://max.bbfurry.de  
+**Live Site**: https://maexelmau.de  
 **Project Name**: `maexel-astro`  
 **Version**: 1.0.0
 
@@ -47,7 +47,7 @@
 ```
 MaexelMau/
 ├── public/
-│   ├── CNAME (max.bbfurry.de)           # Custom domain configuration
+│   ├── CNAME (maexelmau.de)           # Custom domain configuration
 │   └── favicon.svg                      # Site favicon
 ├── src/
 │   ├── components/
@@ -199,16 +199,70 @@ pnpm astro -- --help  # Get Astro CLI help
 
 ## 🚀 Deployment & Hosting
 
-- **Domain**: `max.bbfurry.de`
-- **Hosting**: GitHub Pages (CNAME file configured)
-- **Build**: Static site generation via Astro
-- **CMS**: CloudCannon-compatible (`.pages.yml` configuration)
+### GitHub Pages Deployment
+
+The site is automatically deployed to **GitHub Pages** with a custom domain configuration:
+
+- **Live URL**: https://maexelmau.de
+- **GitHub Pages URL**: https://[username].github.io/MaexelMau (redirects to custom domain)
+- **Custom Domain**: Configured via `public/CNAME` file
 
 ### Deployment Configuration
 
-- **Site URL**: Set in `astro.config.mjs` as `https://max.bbfurry.de`
-- **Static output**: Astro generates static HTML/CSS/JS
-- **Asset optimization**: Sharp for images, Tailwind for CSS
+#### Custom Domain Setup
+```
+# public/CNAME
+maexelmau.de
+```
+
+#### Astro Configuration for GitHub Pages
+The `astro.config.mjs` is configured for GitHub Pages deployment:
+```javascript
+export default defineConfig({
+  site: 'https://maexelmau.de',
+  // Additional GitHub Pages optimizations
+});
+```
+
+### Deployment Process
+
+1. **Automatic Deployment**: 
+   - Push changes to the main branch
+   - GitHub Actions automatically builds and deploys the site
+   - Changes are live within minutes
+
+2. **Build Process**:
+   ```bash
+   pnpm build        # Generates static files in ./dist/
+   ```
+
+3. **Manual Deployment** (if needed):
+   - Build the project locally
+   - Push the `dist` folder contents to the `gh-pages` branch
+   - GitHub Pages serves from the `gh-pages` branch
+
+### Domain Configuration
+
+- **DNS Setup**: The domain `maexelmau.de` points to GitHub Pages servers
+- **HTTPS**: Automatically enabled via GitHub Pages
+- **CDN**: Global content delivery via GitHub's infrastructure
+
+### Deployment Checklist
+
+Before deploying major changes:
+- [ ] Test locally with `pnpm dev`
+- [ ] Build and preview with `pnpm build && pnpm preview`
+- [ ] Check all images and assets load correctly
+- [ ] Verify responsive design on different screen sizes
+- [ ] Test interactive features (meow clicks, navigation)
+- [ ] Validate HTML and accessibility
+
+### Environment Considerations
+
+- **Production Build**: Optimized for performance with minified assets
+- **Static Generation**: All pages are pre-rendered for fast loading
+- **Image Optimization**: Sharp integration for optimized images
+- **CSS Purging**: Tailwind CSS is purged for minimal bundle size
 
 ## 📝 Content Management
 
@@ -277,7 +331,7 @@ tags: ["tag1", "tag2"] # optional
 
 ### `astro.config.mjs`
 
-- **Site URL**: `https://max.bbfurry.de`
+- **Site URL**: `https://maexelmau.de`
 - **Integrations**: Astro Icon, MDX
 - **Vite plugins**: Tailwind CSS
 - **Build**: Static output

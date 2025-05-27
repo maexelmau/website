@@ -1,0 +1,241 @@
+# Max's Katzenkörbchen - Cursor Rules
+
+## 🐱 Project Context
+This is Max's personal cat-themed website "Katzenkörbchen" (cat basket in German), built with Astro 5.8.0. The site has a playful, cozy aesthetic with modern web standards and cat-themed interactive elements.
+
+## 🏗️ Technical Stack & Architecture
+
+### Core Technologies
+- **Astro 5.8.0** - Static site generator with component islands
+- **Tailwind CSS 4.1.7** - Utility-first styling
+- **TypeScript** - Type safety throughout
+- **pnpm** - Package management
+- **GitHub Pages** - Deployment to maexelmau.de
+
+### Component Architecture
+- Use `.astro` components for UI elements
+- Modular component design (Header, Hero, MainContent, Footer, Welcome)
+- TypeScript for scripts and complex logic
+- MDX for blog content with frontmatter schemas
+
+## 🎨 Design System & Styling
+
+### Typography
+- **Inter** - Primary sans-serif font for UI and body text
+- **Pacifico** - Script font for accents, signatures, and playful elements
+- Responsive typography with Tailwind classes (text-4xl, text-6xl, text-8xl)
+
+### Color Palette
+- **Primary**: Blue to pink gradients (`from-blue-400 to-pink-400`)
+- **Neutral**: Clean whites, subtle grays
+- **Accents**: Pink strokes, blue shadows for special text effects
+- **Icons**: Subtle grays instead of bright colors
+
+### Visual Effects
+- Drop shadows and text strokes for hero typography
+- Subtle card shadows and rounded corners
+- Smooth hover transitions
+- Playful rotations for cat images (12 degrees)
+
+## 📝 Code Style & Conventions
+
+### File Naming
+- **Components**: PascalCase (e.g., `Header.astro`, `MainContent.astro`)
+- **Pages**: lowercase with hyphens (e.g., `index.astro`, `blog-post.astro`)
+- **Scripts**: camelCase (e.g., `meow.ts`)
+- **Styles**: lowercase (e.g., `global.css`)
+
+### Astro Components
+```astro
+---
+// TypeScript frontmatter
+interface Props {
+  title?: string;
+}
+
+const { title = "Default Title" } = Astro.props;
+---
+
+<div class="component-wrapper">
+  <h1 class="text-2xl font-bold">{title}</h1>
+</div>
+
+<style>
+  /* Scoped styles when needed */
+</style>
+```
+
+### TypeScript Standards
+- Use interfaces for prop definitions
+- Prefer `const` over `let`
+- Use optional chaining and nullish coalescing
+- Type all function parameters and return values
+
+### CSS/Tailwind Guidelines
+- **Mobile-first**: Start with mobile styles, add responsive variants
+- **Utility classes**: Prefer Tailwind utilities over custom CSS
+- **Responsive design**: Use `sm:`, `md:`, `lg:`, `xl:` breakpoints
+- **Spacing**: Use Tailwind spacing scale (p-4, m-8, etc.)
+- **Custom CSS**: Only when Tailwind utilities aren't sufficient
+
+## 🧩 Component Guidelines
+
+### Component Structure
+1. **Frontmatter** - TypeScript logic, props, imports
+2. **Template** - HTML with Astro/JSX syntax
+3. **Styles** - Scoped CSS when needed (prefer Tailwind)
+
+### Props & Interfaces
+```typescript
+interface Props {
+  title: string;           // Required props
+  subtitle?: string;       // Optional props with defaults
+  variant?: 'primary' | 'secondary'; // Union types for variants
+}
+
+const { 
+  title, 
+  subtitle = "Default subtitle",
+  variant = 'primary' 
+} = Astro.props;
+```
+
+### Responsive Design Patterns
+```astro
+<!-- Mobile-first responsive classes -->
+<h1 class="text-4xl sm:text-6xl lg:text-8xl font-pacifico">
+  Katzenkörbchen
+</h1>
+
+<!-- Responsive spacing -->
+<div class="p-4 sm:p-6 lg:p-8">
+  <!-- Content -->
+</div>
+```
+
+## 🎯 Interactive Features
+
+### Meow Click Effect
+- Use TypeScript for interactive scripts
+- Non-intrusive animations (fade-out, scale effects)
+- Proper z-index management
+- Performance optimized with Object.assign
+- Randomized positioning for variety
+
+### Animation Guidelines
+- Smooth transitions (transition-all duration-300)
+- Subtle hover effects
+- Scale animations over position changes
+- Respect user motion preferences
+
+## 📁 File Organization
+
+### Directory Structure
+```
+src/
+├── components/          # Reusable UI components
+├── layouts/            # Page templates
+├── pages/              # Route-based pages
+├── scripts/            # TypeScript utilities
+├── styles/             # Global CSS
+├── content/            # MDX content collections
+└── assets/             # Static assets
+```
+
+### Import Conventions
+```astro
+---
+// Astro components
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+// External libraries
+import { Icon } from 'astro-icon/components';
+
+// TypeScript utilities
+import type { CollectionEntry } from 'astro:content';
+---
+```
+
+## 🔧 Development Practices
+
+### Content Collections
+- Use TypeScript schemas for content validation
+- Frontmatter should include required fields (title, slug, description, pubDate)
+- Optional fields with sensible defaults
+- Proper image handling with Astro's image optimization
+
+### Performance Considerations
+- Optimize images with Sharp integration
+- Use Astro's static generation for fast loading
+- Minimize JavaScript bundle size
+- Leverage Tailwind's CSS purging
+
+### Accessibility
+- Semantic HTML structure
+- Proper heading hierarchy (h1 → h2 → h3)
+- Alt text for images
+- Keyboard navigation support
+- Color contrast compliance
+
+## 🚀 Deployment & Build
+
+### Build Process
+```bash
+pnpm build              # Production build
+pnpm preview           # Preview build locally
+```
+
+### GitHub Pages Deployment
+- Automatic deployment on main branch push
+- Custom domain: maexelmau.de
+- CNAME file in public/ directory
+- Optimized for static hosting
+
+## 🐾 Cat-Themed Guidelines
+
+### Playful Elements
+- Use cat-related imagery and icons thoughtfully
+- Maintain professional quality while being playful
+- Interactive elements should feel natural and fun
+- German cat terminology when appropriate ("Katzenkörbchen")
+
+### Content Tone
+- Friendly and welcoming
+- Cat-enthusiast focused
+- Clean and modern presentation
+- Personal but professional
+
+## 🔍 Testing & Quality
+
+### Pre-deployment Checklist
+- [ ] Test responsive design on multiple screen sizes
+- [ ] Verify all interactive features work
+- [ ] Check image loading and optimization
+- [ ] Validate HTML structure
+- [ ] Test navigation and routing
+- [ ] Ensure accessibility standards
+
+### Code Quality
+- Use Prettier for consistent formatting
+- TypeScript strict mode enabled
+- No console.log statements in production
+- Proper error handling for user interactions
+
+## 📚 Documentation
+
+### Component Documentation
+- Include JSDoc comments for complex components
+- Document prop interfaces clearly
+- Provide usage examples in comments
+- Keep README.md updated with major changes
+
+### Commit Messages
+- Use conventional commit format
+- Include scope when relevant (feat(components): add new hero section)
+- Clear, descriptive messages
+- Reference issues when applicable
+
+---
+
+Remember: This is Max's cozy corner of the internet. Keep it playful, modern, and cat-friendly while maintaining high code quality and performance standards! 🐱 
